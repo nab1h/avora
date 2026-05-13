@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('msg')->nullable();
             $table->boolean('is_archive')->nullable();
             $table->boolean('is_delete')->nullable();
+            $table->boolean('in_user')->nullable();
             $table->timestamps();
         });
     }
