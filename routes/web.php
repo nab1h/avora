@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,13 +22,11 @@ Route::middleware('auth')->group(function () {
         Route::prefix('admin')->name('admin.')->group(function () {
 
 
-
-
         });
 
-        Route::prefix('themes')->name('themes.')->group(function () {
-
-
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::get('/settings', [SettingsController::class, 'index'])->name('index');
+            Route::post('/settings/{id}', [SettingsController::class, 'update'])->name('update');
 
 
         });
@@ -55,6 +54,7 @@ Route::middleware('auth')->group(function () {
 
             Route::patch('/reservations/{id}/restore', [ReservationController::class, 'restore'])
                 ->name('reservations.restore');
+
 
 
     });

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurum | Michelin Star Fine Dining</title>
+    <title>{{ $setting->site_title ?? 'Aurum | Fine Dining' }}</title>
+
+    <meta name="description" content="{{ $setting->meta_description ?? 'Luxury Fine Dining Experience' }}">
 
     <!-- Google Fonts for Luxury Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +15,24 @@
 
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Icons -->
+    @if($setting->icon_180)
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('storage/' . $setting->icon_180) }}">
+    @endif
+
+    @if($setting->icon_32)
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . $setting->icon_32) }}">
+    @endif
+
+    @if($setting->icon_16)
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('storage/' . $setting->icon_16) }}">
+    @endif
+
+    @if($setting->manifest)
+    <link rel="manifest" href="{{ asset('storage/' . $setting->manifest) }}">
+    @endif
+
 
     <!-- GSAP for Advanced Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -169,9 +189,14 @@
         .logo {
             font-family: var(--font-serif);
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-white);
             letter-spacing: 2px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: 80px
         }
 
         .logo span {
@@ -898,7 +923,13 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">AURUM<span>.</span></a>
+            <a href="#" class="logo flex items-center gap-2">
+                @if($setting->logo)
+                <img src="{{ asset('storage/' . $setting->logo) }}" alt="{{ $setting->site_name }}" class="logo-img w-auto">
+                @else
+                <i class="fas fa-utensils text-[#E60914]"></i>
+                @endif
+            </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -1210,7 +1241,9 @@
                     <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="contact-details">
                         <h5 data-lang="contact_addr_title">Address</h5>
-                        <p data-lang="contact_addr_val">123 Luxury Avenue, Golden District, Dubai, UAE</p>
+                        <p data-content-en="{{ $setting->address_en }}" data-content-ar="{{ $setting->address_ar }}">
+                            {{ $setting->address_en }}
+                        </p>
                     </div>
                 </div>
 
@@ -1218,7 +1251,7 @@
                     <div class="contact-icon"><i class="fas fa-phone"></i></div>
                     <div class="contact-details">
                         <h5 data-lang="contact_phone_title">Phone</h5>
-                        <p>+971 4 123 4567</p>
+                        <p dir="ltr">{{ $setting->mobile }}</p>
                     </div>
                 </div>
 
@@ -1226,7 +1259,10 @@
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-details">
                         <h5 data-lang="contact_email_title">Email</h5>
-                        <p>reservations@aurum-dining.com</p>
+
+                        <a href="mailto:{{ $setting->email }}" class="hover:text-[#E60914] transition">
+                            <p>{{ $setting->email }}</p>
+                        </a>
                     </div>
                 </div>
 
@@ -1234,18 +1270,32 @@
                     <div class="contact-icon"><i class="fas fa-clock"></i></div>
                     <div class="contact-details">
                         <h5 data-lang="contact_hours_title">Opening Hours</h5>
-                        <p data-lang="contact_hours_val">Daily: 6:00 PM - 11:30 PM</p>
+                        <p data-content-en="{{ $setting->hours_en }}" data-content-ar="{{ $setting->hours_ar }}">
+                            {{ $setting->hours_en }}
+                        </p>
                     </div>
                 </div>
 
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    @if($setting->facebook)
+                    <a href="{{ $setting->facebook }}" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    @endif
+                    @if($setting->instagram)
+                    <a href="{{ $setting->instagram }}" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    @endif
+                    @if($setting->twitter)
+                    <a href="{{ $setting->twitter }}" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                    @endif
+                    @if($setting->snapchat)
+                    <a href="{{ $setting->snapchat }}" target="_blank" class="social-link"><i class="fab fa-snapchat-ghost"></i></a>
+                    @endif
+                    @if($setting->tiktok)
+                    <a href="{{ $setting->tiktok }}" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    @endif
                 </div>
             </div>
             <div class="map-wrapper">
-                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.364567829338!2d55.27436507538506!3d25.27698797769956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5a4a5a5a5a5a%3A0x5a5a5a5a5a5a5a5a!2sDubai%20Mall!5e0!3m2!1sen!2sae!4v1600000000000!5m2!1sen!2sae" allowfullscreen="" loading="lazy"></iframe>
+                {!! $setting->map_link !!}
             </div>
         </div>
     </section>
@@ -1253,8 +1303,13 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <a href="#" class="footer-logo">AURUM<span>.</span></a>
-            <p class="copyright">&copy; 2023 Aurum Restaurant. All Rights Reserved.</p>
+            <a href="#" class="footer-logo flex items-center justify-center gap-2">
+                @if($setting->logo)
+                <img src="{{ asset('storage/' . $setting->logo) }}" class="logo-img w-auto">
+                @endif
+                {{ $setting->site_name ?? 'AURUM' }}<span>.</span>
+            </a>
+            <p class="copyright">&copy; 2023 {{ $setting->site_name ?? 'Aurum Restaurant' }}. All Rights Reserved.</p>
             <div style="margin-top: 20px;">
                 <input type="email" placeholder="Subscribe to our newsletter" style="padding: 10px; border: 1px solid #333; background: #000; color: #fff;">
                 <button class="btn" style="padding: 10px 20px; font-size: 0.7rem;">GO</button>
@@ -1395,19 +1450,33 @@
         });
 
         function updateLanguage() {
-            // Update direction and lang attribute
+            // 1. تحديث اتجاه الصفحة
             const html = document.documentElement;
             html.setAttribute('dir', currentLanguage === 'ar' ? 'rtl' : 'ltr');
             html.setAttribute('lang', currentLanguage);
 
-            // Update display text
+            // 2. تحديث زر اللغة
             currentLangDisplay.textContent = currentLanguage === 'en' ? 'EN' : 'عربي';
 
-            // Update all elements with data-lang attribute
+            // 3. تحديث النصوص الثابتة (الكود الموجود عندك حالياً)
             document.querySelectorAll('[data-lang]').forEach(el => {
                 const key = el.getAttribute('data-lang');
                 if (translations[currentLanguage][key]) {
                     el.textContent = translations[currentLanguage][key];
+                }
+            });
+
+            // 4. --- الكود المفقود (تحديث النصوص الديناميكية من قاعدة البيانات) ---
+            // هذا الجزء يقوم بالبحث عن العناصر التي تحمل البيانات من الداتا بيس
+            document.querySelectorAll('[data-content-en]').forEach(el => {
+                const text = currentLanguage === 'ar' ?
+                    el.getAttribute('data-content-ar') // إذا عربي خذ القيمة العربية
+                    :
+                    el.getAttribute('data-content-en'); // إذا إنجليزي خذ القيمة الإنجليزية
+
+                // إذا وجد نص، قم بتحديثه
+                if (text && text.trim() !== "") {
+                    el.textContent = text;
                 }
             });
         }

@@ -38,7 +38,7 @@
                 @if(auth()->user()->role === 'admin' || auth()->user()->role === 'sales')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
-                        {{ __('Orders') }}
+                        {{ __('Reservations') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -69,7 +69,7 @@
 
                 @if(auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('settings.index')" :active="request()->routeIs('settings.index')">
                         {{ __('Settings') }}
                     </x-nav-link>
                 </div>

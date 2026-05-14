@@ -136,7 +136,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    {{ $reservation->reservation_time }}
+                                    {{ \Carbon\Carbon::parse($reservation->reservation_time)->format('H:i') }}
                                 </td>
 
                                 <td class="px-6 py-4">
