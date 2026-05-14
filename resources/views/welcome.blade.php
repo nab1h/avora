@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +53,12 @@
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-serif);
             font-weight: 400;
             letter-spacing: 0.05em;
@@ -240,7 +246,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
             z-index: 0;
         }
 
@@ -259,7 +265,8 @@
             color: var(--gold-primary);
             margin-bottom: 20px;
             display: block;
-            opacity: 0; /* Animated with GSAP */
+            opacity: 0;
+            /* Animated with GSAP */
             transform: translateY(20px);
         }
 
@@ -319,7 +326,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
         }
 
@@ -369,7 +376,8 @@
             position: relative;
         }
 
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn.active,
+        .filter-btn:hover {
             color: var(--gold-primary);
         }
 
@@ -397,11 +405,12 @@
 
         .menu-item {
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             overflow: hidden;
             transition: var(--transition);
-            opacity: 0; /* Hidden initially for filtering */
+            opacity: 0;
+            /* Hidden initially for filtering */
             transform: translateY(20px);
         }
 
@@ -410,13 +419,16 @@
         }
 
         @keyframes fadeInItem {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .menu-item:hover {
             transform: translateY(-10px);
             border-color: var(--gold-dim);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .menu-img-container {
@@ -444,7 +456,7 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 10px;
-            border-bottom: 1px dotted rgba(255,255,255,0.1);
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
             padding-bottom: 10px;
         }
 
@@ -479,9 +491,19 @@
             cursor: pointer;
         }
 
-        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; height: 100%; }
-        .gallery-item:nth-child(2) { grid-column: span 1; }
-        .gallery-item:nth-child(3) { grid-column: span 1; }
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 100%;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: span 1;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: span 1;
+        }
 
         .gallery-img {
             width: 100%;
@@ -496,7 +518,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             opacity: 0;
             transition: var(--transition);
             display: flex;
@@ -592,7 +614,7 @@
         .dot {
             width: 10px;
             height: 10px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
@@ -604,7 +626,7 @@
 
         /* --- Reservation Section --- */
         .reservation-section {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/restaurant-interior/1920/1080.jpg') center/cover fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://picsum.photos/seed/restaurant-interior/1920/1080.jpg') center/cover fixed;
         }
 
         .reservation-form {
@@ -614,7 +636,7 @@
             max-width: 700px;
             margin: 0 auto;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         .form-group {
@@ -625,7 +647,7 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 15px 0;
             color: var(--text-white);
             font-family: var(--font-sans);
@@ -639,7 +661,7 @@
         }
 
         .form-control::placeholder {
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .form-row {
@@ -649,7 +671,7 @@
         }
 
         select.form-control {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* --- Contact & Footer --- */
@@ -700,7 +722,7 @@
             align-items: center;
             width: 45px;
             height: 45px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             margin-right: 15px;
             transition: var(--transition);
@@ -723,7 +745,7 @@
         footer {
             background: var(--bg-dark);
             padding: 40px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
         }
 
@@ -745,21 +767,58 @@
             text-align: right;
         }
 
-        [dir="rtl"] .navbar .logo { margin-right: 0; margin-left: 0; }
-        [dir="rtl"] .nav-links { gap: 40px; }
-        [dir="rtl"] .about-image-wrapper { order: 2; }
-        [dir="rtl"] .about-text { order: 1; }
-        [dir="rtl"] .dish-header { flex-direction: row-reverse; }
-        [dir="rtl"] .contact-icon { margin-right: 0; margin-left: 20px; }
-        [dir="rtl"] .social-link { margin-right: 0; margin-left: 15px; }
+        [dir="rtl"] .navbar .logo {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        [dir="rtl"] .nav-links {
+            gap: 40px;
+        }
+
+        [dir="rtl"] .about-image-wrapper {
+            order: 2;
+        }
+
+        [dir="rtl"] .about-text {
+            order: 1;
+        }
+
+        [dir="rtl"] .dish-header {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .contact-icon {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+
+        [dir="rtl"] .social-link {
+            margin-right: 0;
+            margin-left: 15px;
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            .hero-title { font-size: 3.5rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-item:nth-child(1) { grid-column: span 2; }
-            .contact-container { grid-template-columns: 1fr; }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -777,24 +836,63 @@
                 z-index: 999;
             }
 
-            [dir="rtl"] .nav-links { right: auto; left: -100%; }
+            [dir="rtl"] .nav-links {
+                right: auto;
+                left: -100%;
+            }
 
-            .nav-links.active { right: 0; }
-            [dir="rtl"] .nav-links.active { left: 0; }
+            .nav-links.active {
+                right: 0;
+            }
 
-            .mobile-toggle { display: block; z-index: 1001; }
+            [dir="rtl"] .nav-links.active {
+                left: 0;
+            }
 
-            .hero-title { font-size: 2.5rem; }
-            .hero-buttons { flex-direction: column; }
-            .form-row { grid-template-columns: 1fr; gap: 0; }
-            .stats-container { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
-            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-            .menu-filters { gap: 15px; flex-wrap: wrap; }
-            .filter-btn { font-size: 1.2rem; }
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 250px;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .menu-filters {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .filter-btn {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -945,8 +1043,8 @@
                     </div>
                 </div>
 
-                 <!-- More Starters -->
-                 <div class="menu-item" data-category="starters">
+                <!-- More Starters -->
+                <div class="menu-item" data-category="starters">
                     <div class="menu-img-container">
                         <img src="https://picsum.photos/seed/food5/400/300" alt="Dish" class="menu-img">
                     </div>
@@ -1053,21 +1151,28 @@
                 <h2 data-lang="book_title">Reserve Your Table</h2>
                 <p class="text-gold" data-lang="book_subtitle">Secure your evening of indulgence</p>
             </div>
-            <form class="reservation-form" id="bookingForm">
+
+            <form action="{{ route('reservations.store') }}" method="POST" class="reservation-form" id="bookingForm">
+                @if(session('status'))
+                <div style=" top: 80px; right: 20px; background: #D4AF37; color: #000; padding: 15px 25px; border-radius: 4px; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    {{ session('status') }}
+                </div>
+                @endif
+                @csrf
                 <div class="form-row">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
+                        <input name="name" type="text" class="form-control" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Phone Number" required>
+                        <input name="phone" type="tel" class="form-control" placeholder="Phone Number" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <input type="date" class="form-control" required>
+                        <input name="reservation_date" type="date" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control">
+                        <select name="reservation_time" class="form-control">
                             <option value="" disabled selected>Time</option>
                             <option value="18:00">6:00 PM</option>
                             <option value="19:00">7:00 PM</option>
@@ -1078,13 +1183,13 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <select class="form-control">
+                        <select name="guests" class="form-control">
                             <option value="" disabled selected>Guests</option>
                             <option value="1">1 Person</option>
                             <option value="2">2 People</option>
                             <option value="3">3 People</option>
                             <option value="4">4 People</option>
-                            <option value="5+">5+ People</option>
+                            <option value="5">5+ People</option>
                         </select>
                     </div>
                     <div class="form-group" style="display: flex; align-items: center;">
@@ -1166,7 +1271,12 @@
         // --- Translations ---
         const translations = {
             en: {
-                nav_home: "Home", nav_about: "About", nav_menu: "Menu", nav_gallery: "Gallery", nav_reservation: "Book", nav_contact: "Contact",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_menu: "Menu",
+                nav_gallery: "Gallery",
+                nav_reservation: "Book",
+                nav_contact: "Contact",
                 hero_subtitle: "Experience the Extraordinary",
                 hero_title: "Taste the Art of Perfection",
                 btn_book: "Book a Table",
@@ -1179,24 +1289,46 @@
                 stat_dishes: "Signature Dishes",
                 menu_title: "Culinary Masterpieces",
                 menu_subtitle: "Seasonally Inspired | Globally Sourced",
-                filter_all: "All", filter_starters: "Starters", filter_mains: "Mains", filter_desserts: "Desserts", filter_drinks: "Drinks",
-                dish1_name: "Truffle Arancini", dish1_desc: "Wild mushroom risotto balls, black truffle aioli, parmesan dust.",
-                dish2_name: "Wagyu Beef Tenderloin", dish2_desc: "A5 Japanese Wagyu, garlic confit, roasted root vegetables, red wine reduction.",
-                dish3_name: "Golden Sphere", dish3_desc: "Chocolate sphere, gold leaf, passion fruit core, vanilla bean gelato.",
-                dish4_name: "Smoked Old Fashioned", dish4_desc: "Bourbon, maple syrup, angostura bitters, hickory smoke infusion.",
-                dish5_name: "Scallop Crudo", dish5_desc: "Hokkaido scallops, yuzu pearls, radish, micro cilantro.",
-                dish6_name: "Pan Seared Scallops", dish6_desc: "Cauliflower purée, crispy pancetta, caper butter sauce.",
-                gallery_title: "Visual Feast", gallery_subtitle: "Atmosphere & Plating",
+                filter_all: "All",
+                filter_starters: "Starters",
+                filter_mains: "Mains",
+                filter_desserts: "Desserts",
+                filter_drinks: "Drinks",
+                dish1_name: "Truffle Arancini",
+                dish1_desc: "Wild mushroom risotto balls, black truffle aioli, parmesan dust.",
+                dish2_name: "Wagyu Beef Tenderloin",
+                dish2_desc: "A5 Japanese Wagyu, garlic confit, roasted root vegetables, red wine reduction.",
+                dish3_name: "Golden Sphere",
+                dish3_desc: "Chocolate sphere, gold leaf, passion fruit core, vanilla bean gelato.",
+                dish4_name: "Smoked Old Fashioned",
+                dish4_desc: "Bourbon, maple syrup, angostura bitters, hickory smoke infusion.",
+                dish5_name: "Scallop Crudo",
+                dish5_desc: "Hokkaido scallops, yuzu pearls, radish, micro cilantro.",
+                dish6_name: "Pan Seared Scallops",
+                dish6_desc: "Cauliflower purée, crispy pancetta, caper butter sauce.",
+                gallery_title: "Visual Feast",
+                gallery_subtitle: "Atmosphere & Plating",
                 review1_text: "\"An absolutely transcendent experience. The tasting menu was a journey through flavors I didn't know existed. Impeccable service.\"",
                 review2_text: "\"The ambiance is purely cinematic. Dark, moody, and luxurious. The wagyu beef was cooked to perfection. Highly recommended.\"",
                 review3_text: "\"A hidden gem in the city. The wine pairing is genius. A bit pricey, but worth every penny for a special occasion.\"",
-                book_title: "Reserve Your Table", book_subtitle: "Secure your evening of indulgence",
+                book_title: "Reserve Your Table",
+                book_subtitle: "Secure your evening of indulgence",
                 btn_confirm: "Confirm Booking",
-                contact_title: "Contact Us", contact_addr_title: "Address", contact_addr_val: "123 Luxury Avenue, Golden District, Dubai, UAE",
-                contact_phone_title: "Phone", contact_email_title: "Email", contact_hours_title: "Opening Hours", contact_hours_val: "Daily: 6:00 PM - 11:30 PM"
+                contact_title: "Contact Us",
+                contact_addr_title: "Address",
+                contact_addr_val: "123 Luxury Avenue, Golden District, Dubai, UAE",
+                contact_phone_title: "Phone",
+                contact_email_title: "Email",
+                contact_hours_title: "Opening Hours",
+                contact_hours_val: "Daily: 6:00 PM - 11:30 PM"
             },
             ar: {
-                nav_home: "الرئيسية", nav_about: "قصتنا", nav_menu: "القائمة", nav_gallery: "المعرض", nav_reservation: "حجز", nav_contact: "اتصل بنا",
+                nav_home: "الرئيسية",
+                nav_about: "قصتنا",
+                nav_menu: "القائمة",
+                nav_gallery: "المعرض",
+                nav_reservation: "حجز",
+                nav_contact: "اتصل بنا",
                 hero_subtitle: "اختبر الاستثنائي",
                 hero_title: "تذوق فن الكمال",
                 btn_book: "احجز طاولة",
@@ -1209,21 +1341,38 @@
                 stat_dishes: "أطباق مميزة",
                 menu_title: "روائع الطهي",
                 menu_subtitle: "إلهام موسمي | مصادر عالمية",
-                filter_all: "الكل", filter_starters: "المقبلات", filter_mains: "الأطباق الرئيسية", filter_desserts: "الحلويات", filter_drinks: "المشروبات",
-                dish1_name: "أرنشيني الترافل", dish1_desc: "كرات أرز بالفطر البري، أليولي الترافل الأسود، غبار بارميزان.",
-                dish2_name: "فيليه واجي ياكي", dish2_desc: "واجي ياباني A5، ثوم مملح، خضروات جذرية مشوية، صلصة النبيذ الأحمر.",
-                dish3_name: "الكرة الذهبية", dish3_desc: "كرة شوكولاتة، ورق ذهبي، قلب فاكهة الباشن فروت، جيلاتي فانيلا.",
-                dish4_name: "أولد فاشن المدخن", dish4_desc: "بوربون، شراب القيقب، مرارة أنجوستورا، دخان Hickoky.",
-                dish5_name: "سكلوب كرودو", dish5_desc: "سكلوب هوكايدو، لآلئ اليوزو، فجل، كزبرة صغيرة.",
-                dish6_name: "سكلوب مقلي", dish6_desc: "هريس القرنبيط، بانشيتا مقرمشة، صلصة الكابر.",
-                gallery_title: "وليمة بصرية", gallery_subtitle: "الأجواء والتقديم",
+                filter_all: "الكل",
+                filter_starters: "المقبلات",
+                filter_mains: "الأطباق الرئيسية",
+                filter_desserts: "الحلويات",
+                filter_drinks: "المشروبات",
+                dish1_name: "أرنشيني الترافل",
+                dish1_desc: "كرات أرز بالفطر البري، أليولي الترافل الأسود، غبار بارميزان.",
+                dish2_name: "فيليه واجي ياكي",
+                dish2_desc: "واجي ياباني A5، ثوم مملح، خضروات جذرية مشوية، صلصة النبيذ الأحمر.",
+                dish3_name: "الكرة الذهبية",
+                dish3_desc: "كرة شوكولاتة، ورق ذهبي، قلب فاكهة الباشن فروت، جيلاتي فانيلا.",
+                dish4_name: "أولد فاشن المدخن",
+                dish4_desc: "بوربون، شراب القيقب، مرارة أنجوستورا، دخان Hickoky.",
+                dish5_name: "سكلوب كرودو",
+                dish5_desc: "سكلوب هوكايدو، لآلئ اليوزو، فجل، كزبرة صغيرة.",
+                dish6_name: "سكلوب مقلي",
+                dish6_desc: "هريس القرنبيط، بانشيتا مقرمشة، صلصة الكابر.",
+                gallery_title: "وليمة بصرية",
+                gallery_subtitle: "الأجواء والتقديم",
                 review1_text: "\"تجربة متسامية تمامًا. كانت قائمة التذوق رحلة عبر نكهات لم أكن أعرف بوجودها. خدمة لا تشوبها شائبة.\"",
                 review2_text: "\"الأجواء سينمائية بحتة. مظلمة، كئيبة، وفاخرة. لحم الواجي مطهو بدقة. أوصي بشدة به.\"",
                 review3_text: "\"جوهرة مخفية في المدينة. اقتران النبيذ عبقري. باهظ الثمن قليلاً، ولكنه يستحق كل قرش لمناسبة خاصة.\"",
-                book_title: "احجز طاولتك", book_subtitle: "تأمين مساء من الترف",
+                book_title: "احجز طاولتك",
+                book_subtitle: "تأمين مساء من الترف",
                 btn_confirm: "تأكيد الحجز",
-                contact_title: "اتصل بنا", contact_addr_title: "العنوان", contact_addr_val: "123 شارع الفخامة، حي الذهب، دبي، الإمارات",
-                contact_phone_title: "الهاتف", contact_email_title: "البريد الإلكتروني", contact_hours_title: "ساعات العمل", contact_hours_val: "يومياً: 6:00 مساءً - 11:30 مساءً"
+                contact_title: "اتصل بنا",
+                contact_addr_title: "العنوان",
+                contact_addr_val: "123 شارع الفخامة، حي الذهب، دبي، الإمارات",
+                contact_phone_title: "الهاتف",
+                contact_email_title: "البريد الإلكتروني",
+                contact_hours_title: "ساعات العمل",
+                contact_hours_val: "يومياً: 6:00 مساءً - 11:30 مساءً"
             }
         };
 
@@ -1305,20 +1454,44 @@
 
         // Hero Animations
         const heroTl = gsap.timeline();
-        heroTl.to(".hero-subtitle", { opacity: 1, y: 0, duration: 1, delay: 0.5 })
-              .to(".hero-title", { opacity: 1, y: 0, duration: 1 }, "-=0.5")
-              .to(".hero-buttons", { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+        heroTl.to(".hero-subtitle", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.5
+            })
+            .to(".hero-title", {
+                opacity: 1,
+                y: 0,
+                duration: 1
+            }, "-=0.5")
+            .to(".hero-buttons", {
+                opacity: 1,
+                y: 0,
+                duration: 1
+            }, "-=0.5");
 
         // About Section Fade In
         gsap.from(".about-text", {
-            scrollTrigger: { trigger: "#about", start: "top 70%" },
-            y: 50, opacity: 0, duration: 1
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 70%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1
         });
 
         // Menu Items Stagger
         gsap.from(".menu-item", {
-            scrollTrigger: { trigger: "#menu", start: "top 75%" },
-            y: 50, opacity: 0, duration: 0.8, stagger: 0.1
+            scrollTrigger: {
+                trigger: "#menu",
+                start: "top 75%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
         });
 
         // --- Menu Filtering ---
@@ -1371,34 +1544,54 @@
         }, 5000);
 
         // --- Form Submission ---
-        const bookingForm = document.getElementById('bookingForm');
+        const form = document.getElementById('bookingForm');
         const toast = document.getElementById('toast');
 
-        bookingForm.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            // Simulate API call
-            const btn = bookingForm.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = "Processing...";
 
-            setTimeout(() => {
-                btn.innerText = originalText;
-                bookingForm.reset();
-                showToast(currentLanguage === 'en' ? "Table Booked Successfully!" : "تم حجز الطاولة بنجاح!");
-            }, 1500);
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+
+                const response = await fetch("{{ route('reservations.store') }}", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    form.reset();
+                    showToast(data.message);
+                } else {
+                    showToast("Something went wrong");
+                }
+
+            } catch (error) {
+                showToast("Server error");
+            }
+
+            btn.innerText = originalText;
+            btn.disabled = false;
         });
 
         function showToast(message) {
             toast.innerText = message;
             toast.style.opacity = '1';
-            toast.style.bottom = '50px'; // Slide up effect
+            toast.style.bottom = '50px';
 
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.bottom = '30px';
             }, 3000);
         }
-
     </script>
 </body>
+
 </html>

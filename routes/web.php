@@ -1,18 +1,12 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\admin\ThemeController;
-use App\Http\Controllers\admin\PlatformController;
-use App\Http\Controllers\admin\SettingController;
-use App\Http\Controllers\admin\OrderController;
-use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::post('/reservations', [ReservationController::class, 'store'])
+    ->name('reservations.store');
 
 
 Route::middleware('auth')->group(function () {
@@ -29,13 +23,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
-
-
-
-
         });
 
         Route::prefix('themes')->name('themes.')->group(function () {
@@ -43,30 +30,33 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
-
-
-
         });
-        // ** Orders Controller **
-            Route::delete('/orders/{id}/force-delete', [OrderController::class, 'forceDelete'])->name('orders.force-delete');
-            Route::delete('/orders/delete-all', [OrderController::class, 'deleteAllOrder'])
-            ->name('orders.deleteAllOrder');
-
 
     });
 
     // admin + sales
     Route::middleware('role:admin,sales')->group(function () {
-        Route::get('/orders/archived', [OrderController::class, 'archived'])->name('orders.archived');
-        Route::get('/orders/deleted', [OrderController::class, 'deleted'])->name('orders.deleted');
-        Route::post('/orders/addorder', [OrderController::class, 'storeInUser'])->name('orders.storeInUser');
-        Route::post('/orders/{id}/archive', [OrderController::class, 'archive'])->name('orders.archive');
-        Route::post('/orders/{id}/unarchive', [OrderController::class, 'unarchive'])->name('orders.unarchive');
-        Route::put('/orders/{id}/restore', [OrderController::class, 'restore'])->name('orders.restore');
-        Route::resource('orders', OrderController::class);
+            Route::get('/reservations', [ReservationController::class, 'index'])
+                ->name('reservations.index');
+
+            Route::patch('/reservations/{id}/confirm', [ReservationController::class, 'confirmStatus'])
+                ->name('reservations.confirm');
+
+            Route::patch('/reservations/{id}/complete', [ReservationController::class, 'completeStatus'])
+                ->name('reservations.complete');
+            Route::delete('/reservations/{id}', [ReservationController::class, 'destroy'])
+                ->name('reservations.destroy');
+
+            Route::post('/reservations/{id}/archive-action', [ReservationController::class, 'moveToArchive'])
+                ->name('reservations.moveToArchive');
+
+            Route::get('/reservations/archive', [ReservationController::class, 'archive'])
+                ->name('reservations.archive');
+
+            Route::patch('/reservations/{id}/restore', [ReservationController::class, 'restore'])
+                ->name('reservations.restore');
+
+
     });
     }
 );

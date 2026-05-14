@@ -37,7 +37,7 @@
 
                 @if(auth()->user()->role === 'admin' || auth()->user()->role === 'sales')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                    <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
                         {{ __('Orders') }}
                     </x-nav-link>
                 </div>
