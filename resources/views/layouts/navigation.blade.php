@@ -28,8 +28,8 @@
 
                 @if(auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Admin') }}
+                    <x-nav-link :href="route('admin.home-contents.index')" :active="request()->routeIs('admin.home-contents.index')">
+                        {{ __('Contents') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -53,16 +53,16 @@
 
                 @if(auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('themes') }}
+                    <x-nav-link :href="route('admin.media.index')" :active="request()->routeIs('admin.media.index')">
+                        {{ __('Media') }}
                     </x-nav-link>
                 </div>
                 @endif
 
                 @if(auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Products') }}
+                    <x-nav-link :href="route('admin.faqs.index')" :active="request()->routeIs('admin.faqs.index')">
+                        {{ __('Faqs') }}
                     </x-nav-link>
                 </div>
                 @endif

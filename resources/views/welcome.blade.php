@@ -955,8 +955,16 @@
         <img src="https://picsum.photos/seed/luxuryfood/1920/1080" class="hero-video" alt="Fine Dining Background">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-subtitle" data-lang="hero_subtitle">Experience the Extraordinary</span>
-            <h1 class="hero-title" data-lang="hero_title">Taste the Art of Perfection</h1>
+            <span class="hero-subtitle"
+                data-content-en="{{ $content->hero_subtitle_en }}"
+                data-content-ar="{{ $content->hero_subtitle_ar }}">
+                {{ $content->hero_subtitle_en }}
+            </span>
+            <h1 class="hero-title"
+                data-content-en="{{ $content->hero_title_en }}"
+                data-content-ar="{{ $content->hero_title_ar }}">
+                {{ $content->hero_title_en }}
+            </h1>
             <div class="hero-buttons">
                 <a href="#reservation" class="btn btn-fill" data-lang="btn_book">Book a Table</a>
                 <a href="#menu" class="btn" data-lang="btn_menu">View Menu</a>
@@ -972,13 +980,13 @@
                     <img src="https://picsum.photos/seed/chef/600/700" alt="Executive Chef" class="about-image">
                 </div>
                 <div class="about-text">
-                    <h2 data-lang="about_title">Our Story</h2>
-                    <p data-lang="about_desc">
-                        Founded in 2010, Aurum represents the pinnacle of culinary excellence.
-                        Our philosophy is simple: source the finest ingredients, treat them with
-                        respect, and transform them into unforgettable memories. Under the guidance
-                        of Executive Chef Alessandro Marco, we invite you on a journey through flavor,
-                        texture, and emotion.
+                    <h2 data-content-en="{{ $content->about_title_en }}"
+                        data-content-ar="{{ $content->about_title_ar }}">
+                        {{ $content->about_title_en }}
+                    </h2>
+                    <p data-content-en="{{ $content->about_desc_en }}"
+                        data-content-ar="{{ $content->about_desc_ar }}">
+                        {{ $content->about_desc_en }}
                     </p>
                     <a href="#menu" class="btn" data-lang="about_btn">Discover More</a>
 
@@ -1296,6 +1304,44 @@
             </div>
             <div class="map-wrapper">
                 {!! $setting->map_link !!}
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="section-padding bg-[#111]">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4" data-lang="faq_title">الأسئلة الشائعة</h2>
+                <p class="text-gray-400" data-lang="faq_subtitle">لدينا إجابات لكل استفساراتكم</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                @forelse($faqs as $faq)
+                <!-- سؤال واحد -->
+                <div class="border border-[#1a1a1a] rounded-lg overflow-hidden bg-[#0a0a0a] transition duration-300">
+                    <!-- زر السؤال -->
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none group">
+                        <div>
+                            <span class="text-white font-bold text-lg block data-content-wrapper"
+                                data-content-en="{{ $faq->question_en }}"
+                                data-content-ar="{{ $faq->question_ar }}">
+                                {{ $faq->question_en }}
+                            </span>
+                        </div>
+                        <i class="fas fa-plus text-[#E60914] group-hover:text-white transition duration-300 transform"></i>
+                    </button>
+
+                    <!-- الإجابة (مخفية افتراضياً) -->
+                    <div class="faq-answer hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-6 pt-2 text-gray-300 leading-relaxed text-sm border-t border-[#1a1a1a] mt-2 data-content-wrapper"
+                            data-content-en="{{ $faq->answer_en }}"
+                            data-content-ar="{{ $faq->answer_ar }}">
+                            {{ $faq->answer_en }}
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <p class="text-center text-gray-500">لا توجد أسئلة حالياً.</p>
+                @endforelse
             </div>
         </div>
     </section>
