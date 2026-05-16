@@ -45,8 +45,8 @@
 
                 @if(auth()->user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('platforms') }}
+                    <x-nav-link :href="route('admin.testimonials.index')" :active="request()->routeIs('admin.testimonials.index')">
+                        {{ __('Testimonials') }}
                     </x-nav-link>
                 </div>
                 @endif

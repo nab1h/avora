@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MediaController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\Admin\HomeContentController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/reservations', [ReservationController::class, 'store'])
     ->name('reservations.store');
+// في web.php
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
 
 
 Route::middleware('auth')->group(
@@ -45,6 +48,16 @@ Route::middleware('auth')->group(
             Route::prefix('settings')->name('settings.')->group(function () {
                 Route::get('/settings', [SettingsController::class, 'index'])->name('index');
                 Route::post('/settings/{id}', [SettingsController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('admin')->name('admin.')->group(function () {
+                Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+                Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
+                Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+                Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
+                Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+                Route::put('/testimonials/{id}/status', [TestimonialController::class, 'updateStatus'])->name('testimonials.update-status');
+                Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
             });
         });
 

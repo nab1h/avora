@@ -91,12 +91,9 @@ class MediaController extends Controller
                 $heroImage->delete();
             }
 
-            // حفظ الملف
             $path = $file->store('media', 'public');
             $data['path'] = $path;
 
-            // إذا كان فيديو، لا نحتاج صورة مصغرة هنا (تأكد أن الـ Frontend يتعامل معه)
-            // أو يمكننا حفظ المسار نفسه كـ thumbnail للتبسيط
             $data['thumbnail'] = $path;
         }
 

@@ -570,89 +570,330 @@
             transform: scale(1);
         }
 
-        /* --- Testimonials Section --- */
-        .testimonials-section {
-            background: var(--bg-charcoal);
-            text-align: center;
+        /* --- Modern Testimonials Section Design --- */
+        .modern-testimonials {
+            position: relative;
+            background-image: url('https://picsum.photos/seed/restaurant_dark_luxury/1920/1080');
+            /* صورة خلفية فاخرة */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* تأثير Parallax */
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        /* طبقة تعتيم للخلفية */
+        .modern-testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95));
+            z-index: 1;
         }
 
         .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
-            overflow: hidden;
-            min-height: 400px;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
+        /* الكارت الزجاجي */
         .testimonial-card {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-            padding: 20px;
+            visibility: hidden;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 40px;
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            /* حدود ذهبية خفيفة */
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
+        /* الحالة النشطة */
         .testimonial-card.active {
             opacity: 1;
-            pointer-events: all;
+            visibility: visible;
+            transform: scale(1) translateY(0);
             position: relative;
+            /* يصبح مكانه الطبيعي */
         }
 
-        .user-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--gold-primary);
-            margin: 0 auto 20px;
-            object-fit: cover;
-        }
-
-        .testimonial-text {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-style: italic;
-            margin-bottom: 30px;
-            line-height: 1.4;
-        }
-
-        .stars {
+        /* علامات التنصيص الكبيرة الخلفية */
+        .big-quote {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
             color: var(--gold-primary);
-            margin-bottom: 15px;
+            opacity: 0.1;
+            line-height: 1;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* صورة العميل */
+        .user-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold-primary);
+            padding: 4px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* النجوم */
+        .t-stars {
+            margin-bottom: 25px;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* نص الرسالة */
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            line-height: 1.4;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 30px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* معلومات العميل */
+        .user-info {
+            position: relative;
+            display: inline-block;
         }
 
         .user-name {
-            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
+        .user-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* النقاط (Dots) المحدثة */
         .slider-dots {
-            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            margin-top: 40px;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.2);
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .dot:hover {
+            background: rgba(212, 175, 55, 0.4);
         }
 
         .dot.active {
             background: var(--gold-primary);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* تحسينات للموبايل */
+        @media (max-width: 768px) {
+            .testimonial-text {
+                font-size: 1.4rem;
+            }
+
+            .big-quote {
+                font-size: 5rem;
+                top: 0;
+            }
+
+            .modern-testimonials {
+                padding: 60px 0;
+            }
+        }
+
+        /* --- Testimonial Form Styles --- */
+        .testimonial-form-section {
+            background: #0a0a0a;
+            padding: 100px 0;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* النص التوضيحي الجانبي */
+        .form-intro h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .form-intro p {
+            color: #888;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* حاوية الفورم الزجاجية */
+        .review-form-card {
+            background: #121212;
+            padding: 50px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* حقول الإدخال */
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .review-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .review-input:focus {
+            outline: none;
+            border-bottom-color: var(--gold-primary);
+        }
+
+        .review-input::placeholder {
+            color: #555;
+        }
+
+        /* نظام النجوم التفاعلي (CSS Only) */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            /* عكس الاتجاه لجعل hover يملأ النجوم */
+            justify-content: flex-end;
+            /* محاذاة لليمين */
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* دعم RTL */
+        [dir="rtl"] .star-rating {
+            justify-content: flex-start;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 1.8rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        /* عند النقر أو التحويم، لون النجمة الحالية وما قبلها */
+        .star-rating input:checked~label,
+        .star-rating label:hover,
+        .star-rating label:hover~label {
+            color: var(--gold-primary);
+        }
+
+        /* زر الإرسال */
+        .btn-submit-review {
+            background: var(--gold-primary);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .btn-submit-review:hover {
+            background: #fff;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* رسائل الخطأ */
+        .error-msg {
+            color: #ff4d4d;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .form-intro {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .review-form-card {
+                padding: 30px 20px;
+            }
         }
 
         /* --- Reservation Section --- */
-        .reservation-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://picsum.photos/seed/restaurant-interior/1920/1080.jpg') center/cover fixed;
-        }
 
         .reservation-form {
             background: rgba(18, 18, 18, 0.9);
@@ -915,6 +1156,166 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* --- Modern FAQ Section Styles --- */
+        .faq-section-wrapper {
+            background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* زخرفة خلفية خفيفة */
+        .faq-section-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .faq-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            /* خط فخم */
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .faq-header p {
+            color: var(--gold-primary);
+            /* اللون الذهبي أو استخدم لونك المفضل */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* تصميم الكرت */
+        .faq-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* تأثير التحويم */
+        .faq-card:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* زر السؤال */
+        .faq-btn {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: right;
+            transition: background 0.3s;
+        }
+
+        .faq-btn:hover {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        /* نص السؤال */
+        .faq-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #e0e0e0;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        /* عند الفتح */
+        .faq-card.active .faq-question {
+            color: var(--gold-primary);
+        }
+
+        /* الأيقونة */
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--gold-primary);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+        }
+
+        .faq-card.active .faq-icon {
+            transform: rotate(135deg);
+            /* تدوير علامة + لتصبح x */
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        /* الإجابة */
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-card.active .faq-body {
+            /* سيتم تحديد الارتفاع بالجافاسكريبت */
+        }
+
+        .faq-content {
+            padding: 0 25px 25px 25px;
+            color: #a0a0a0;
+            line-height: 1.8;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 10px;
+            padding-top: 20px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+        }
+
+        .faq-card.active .faq-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* شريط جانبي ملون عند الفتح */
+        .faq-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .faq-card.active::after {
+            transform: scaleY(1);
+        }
+
+        /* دعم الـ RTL */
+        [dir="rtl"] .faq-card::after {
+            right: auto;
+            left: 0;
+        }
     </style>
 </head>
 
@@ -1146,43 +1547,197 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section-padding testimonials-section">
+    <!-- Testimonials Section - Modern Luxury Design -->
+    <section id="testimonials" class="modern-testimonials">
         <div class="container">
             <div class="testimonial-slider">
-                <div class="testimonial-card active" data-index="0">
-                    <img src="https://picsum.photos/seed/person1/100/100" alt="User" class="user-img">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                @forelse($testimonials as $item)
+                <div class="testimonial-card {{ $loop->first ? 'active' : '' }}" data-index="{{ $loop->index }}">
+
+                    <!-- أيقونة اقتباس كبيرة في الخلفية للزينة -->
+                    <div class="big-quote">“</div>
+
+                    <!-- صورة العميل -->
+                    <img src="https://picsum.photos/seed/{{ $item->id ?? 'user' }}/200/200" alt="User" class="user-img">
+
+                    <!-- النجوم -->
+                    <div class="t-stars">
+                        @for($i = 1; $i <= 5; $i++)
+                            @if($i <=$item->rating)
+                            <i class="fas fa-star"></i>
+                            @else
+                            <i class="far fa-star" style="opacity: 0.3;"></i>
+                            @endif
+                            @endfor
                     </div>
-                    <p class="testimonial-text" data-lang="review1_text">"An absolutely transcendent experience. The tasting menu was a journey through flavors I didn't know existed. Impeccable service."</p>
-                    <h5 class="user-name">- Sophia Laurent</h5>
+
+                    <!-- نص الرسالة -->
+                    <p class="testimonial-text">
+                        {{ $item->message }}
+                    </p>
+
+                    <!-- معلومات العميل -->
+                    <div class="user-info">
+                        <h5 class="user-name">{{ $item->name }}</h5>
+                        @if($item->role)
+                        <span class="user-role">{{ $item->role }}</span>
+                        @endif
+                    </div>
+
                 </div>
-                <div class="testimonial-card" data-index="1">
-                    <img src="https://picsum.photos/seed/person2/100/100" alt="User" class="user-img">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text" data-lang="review2_text">"The ambiance is purely cinematic. Dark, moody, and luxurious. The wagyu beef was cooked to perfection. Highly recommended."</p>
-                    <h5 class="user-name">- James Sterling</h5>
+                @empty
+                <div class="text-center text-gray-400 py-10">
+                    <p>لا توجد آراء لعرضها حالياً.</p>
                 </div>
-                <div class="testimonial-card" data-index="2">
-                    <img src="https://picsum.photos/seed/person3/100/100" alt="User" class="user-img">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="testimonial-text" data-lang="review3_text">"A hidden gem in the city. The wine pairing is genius. A bit pricey, but worth every penny for a special occasion."</p>
-                    <h5 class="user-name">- Amira Al-Fayed</h5>
+                @endforelse
+
+                <!-- نقاط التنقل -->
+                <div class="slider-dots" id="slider-dots">
+                    @foreach($testimonials as $item)
+                    <div class="dot {{ $loop->first ? 'active' : '' }}" onclick="setSlide({{ $loop->index }})"></div>
+                    @endforeach
                 </div>
 
-                <div class="slider-dots" id="slider-dots">
-                    <div class="dot active" onclick="setSlide(0)"></div>
-                    <div class="dot" onclick="setSlide(1)"></div>
-                    <div class="dot" onclick="setSlide(2)"></div>
-                </div>
             </div>
         </div>
     </section>
 
+    <!-- قسم فورم إرسال الرأي -->
+    <section class="testimonial-form-section">
+        <div class="container">
+            <div class="form-layout">
+
+                <!-- الجانب الأيمن: نص ترحيبي -->
+                <div class="form-intro">
+                    <h3 data-lang="share_exp_title">شاركنا تجربتك</h3>
+                    <p data-lang="share_exp_desc">
+                        نسعى دائماً لتقديم أفضل تجربة طعام لعملائنا. رأيك يهمنا جداً ويساعدنا على التحسين المستمر. نحن نتطلع لسماع قصتك معنا.
+                    </p>
+                    <div style="font-size: 3rem; color: rgba(212, 175, 55, 0.2);">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+
+                <!-- الجانب الأيسر: الفورم -->
+                <div class="review-form-card">
+
+                    <!-- رسالة النجاح (مخفية في البداية) -->
+                    <div id="successMessage" style="display: none; text-align: center; padding: 40px 0;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: #4ade80; margin-bottom: 20px;"></i>
+                        <h3 style="color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 10px;">شكراً لك!</h3>
+                        <p style="color: #aaa;">تم إرسال تقييمك بنجاح وسيتم نشره بعد المراجعة.</p>
+                        <button onclick="resetFormView()" style="margin-top: 20px; background: transparent; border: 1px solid #333; color: #fff; padding: 10px 20px; cursor: pointer; border-radius: 4px;">إضافة تقييم آخر</button>
+                    </div>
+
+                    <!-- الفورم -->
+                    <form id="reviewForm" action="{{ route('testimonials.store') }}" method="POST">
+                        @csrf
+
+                        <!-- الاسم -->
+                        <div class="input-group">
+                            <input type="text" name="name" id="inputName" class="review-input" placeholder="الاسم الكامل" required value="{{ old('name') }}">
+                            <span class="error-msg" id="error-name"></span>
+                        </div>
+
+                        <!-- المنصب (اختياري) -->
+                        <div class="input-group">
+                            <input type="text" name="role" class="review-input" placeholder="المنصب (اختياري)" value="{{ old('role') }}">
+                        </div>
+
+                        <!-- التقييم بالنجوم -->
+                        <div class="input-group" style="text-align: right;">
+                            <label style="display:block; margin-bottom:10px; color:#888; font-size:0.9rem;">قيم تجربتك:</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" class="fas fa-star"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" class="fas fa-star"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" class="fas fa-star"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" class="fas fa-star"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" class="fas fa-star"></label>
+                            </div>
+                            <span class="error-msg" id="error-rating"></span>
+                        </div>
+
+                        <!-- الرسالة -->
+                        <div class="input-group">
+                            <textarea name="message" id="inputMessage" class="review-input" rows="4" placeholder="اكتب تجربتك هنا..." required>{{ old('message') }}</textarea>
+                            <span class="error-msg" id="error-message"></span>
+                        </div>
+
+                        <!-- زر الإرسال -->
+                        <button type="submit" id="submitBtn" class="btn-submit-review">
+                            إرسال التقييم <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع عمل ريفريش للصفحة
+
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(form);
+
+            // تغيير نص الزر أثناء التحميل
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'جاري الإرسال...';
+            submitBtn.disabled = true;
+
+            // تنظيف رسائل الخطأ السابقة
+            document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+
+            fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // إخفاء الفورم وإظهار رسالة النجاح
+                        form.style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                        form.reset(); // تفريغ الحقول
+                    } else {
+                        // في حالة وجود أخطاء (Validation Errors)
+                        if (data.errors) {
+                            // عرض الأخطاء أسفل الحقول
+                            if (data.errors.name) document.getElementById('error-name').textContent = data.errors.name[0];
+                            if (data.errors.rating) document.getElementById('error-rating').textContent = data.errors.rating[0];
+                            if (data.errors.message) document.getElementById('error-message').textContent = data.errors.message[0];
+
+                            // رسالة تنبيه عامة
+                            alert('يرجى تصحيح الأخطاء والمحاولة مرة أخرى');
+                        } else {
+                            alert('حدث خطأ غير متوقع');
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('حدث خطأ في الاتصال بالخادم');
+                })
+                .finally(() => {
+                    // إعادة الزر لحالته الأصلية
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // دالة لإعادة الفورم للظهور مرة أخرى
+        function resetFormView() {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('reviewForm').style.display = 'block';
+        }
+    </script>
     <!-- Reservation Section -->
     <section id="reservation" class="section-padding reservation-section">
         <div class="container">
@@ -1307,32 +1862,34 @@
             </div>
         </div>
     </section>
-    <section id="faq" class="section-padding bg-[#111]">
+    <!-- FAQ Section - Modern Aesthetic -->
+    <section id="faq" class="section-padding faq-section-wrapper">
         <div class="container">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4" data-lang="faq_title">الأسئلة الشائعة</h2>
-                <p class="text-gray-400" data-lang="faq_subtitle">لدينا إجابات لكل استفساراتكم</p>
+            <div class="text-center mb-16 faq-header">
+                <p class="mb-2">Have Questions?</p>
+                <h2 data-lang="faq_title">الأسئلة الشائعة</h2>
+                <div style="width: 60px; height: 2px; background: var(--gold-primary); margin: 20px auto;"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-4">
+            <div class="max-w-4xl mx-auto">
                 @forelse($faqs as $faq)
                 <!-- سؤال واحد -->
-                <div class="border border-[#1a1a1a] rounded-lg overflow-hidden bg-[#0a0a0a] transition duration-300">
+                <div class="faq-card" onclick="toggleFaq(this)">
                     <!-- زر السؤال -->
-                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none group">
-                        <div>
-                            <span class="text-white font-bold text-lg block data-content-wrapper"
-                                data-content-en="{{ $faq->question_en }}"
-                                data-content-ar="{{ $faq->question_ar }}">
-                                {{ $faq->question_en }}
-                            </span>
+                    <button class="faq-btn">
+                        <span class="faq-question data-content-wrapper"
+                            data-content-en="{{ $faq->question_en }}"
+                            data-content-ar="{{ $faq->question_ar }}">
+                            {{ $faq->question_en }}
+                        </span>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
                         </div>
-                        <i class="fas fa-plus text-[#E60914] group-hover:text-white transition duration-300 transform"></i>
                     </button>
 
-                    <!-- الإجابة (مخفية افتراضياً) -->
-                    <div class="faq-answer hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="px-6 pb-6 pt-2 text-gray-300 leading-relaxed text-sm border-t border-[#1a1a1a] mt-2 data-content-wrapper"
+                    <!-- الإجابة -->
+                    <div class="faq-body">
+                        <div class="faq-content data-content-wrapper"
                             data-content-en="{{ $faq->answer_en }}"
                             data-content-ar="{{ $faq->answer_ar }}">
                             {{ $faq->answer_en }}
@@ -1340,7 +1897,9 @@
                     </div>
                 </div>
                 @empty
-                <p class="text-center text-gray-500">لا توجد أسئلة حالياً.</p>
+                <div class="text-center py-10 border border-dashed border-gray-800 rounded-lg">
+                    <p class="text-gray-500">لا توجد أسئلة شائعة حالياً.</p>
+                </div>
                 @endforelse
             </div>
         </div>
@@ -1705,6 +2264,32 @@
                 toast.style.opacity = '0';
                 toast.style.bottom = '30px';
             }, 3000);
+        }
+
+
+        function toggleFaq(element) {
+            // البحث عن العنصر النشط حالياً (غير العنصر الذي تم ضغطه)
+            const allCards = document.querySelectorAll('.faq-card');
+            const isActive = element.classList.contains('active');
+
+            // إغلاق جميع العناصر الأخرى لتنظيف الواجهة (اختياري)
+            allCards.forEach(card => {
+                if (card !== element && card.classList.contains('active')) {
+                    card.classList.remove('active');
+                    card.querySelector('.faq-body').style.maxHeight = null;
+                }
+            });
+
+            // تبديل حالة العنصر الحالي
+            if (isActive) {
+                element.classList.remove('active');
+                element.querySelector('.faq-body').style.maxHeight = null;
+            } else {
+                element.classList.add('active');
+                const body = element.querySelector('.faq-body');
+                // حساب الارتفاع الحقيقي للمحتوى
+                body.style.maxHeight = body.scrollHeight + "px";
+            }
         }
     </script>
 </body>

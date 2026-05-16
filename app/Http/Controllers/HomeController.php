@@ -6,6 +6,7 @@ use App\Models\Setting;
 use App\Models\HomeContent;
 use App\Models\Faq;
 use App\Models\Media;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,7 +19,10 @@ class HomeController extends Controller
         $heroVideo = Media::where('type', 'hero_video')->where('is_active', true)->first();
         $heroImage = Media::where('type', 'hero_image')->where('is_active', true)->first();
         $galleryImages = Media::where('type', 'gallery_image')->where('is_active', true)->ordered()->get();
+        $testimonials = Testimonial::where('is_active', true)
+            ->latest()
+            ->get();
 
-        return view('welcome',compact('setting', 'content', 'faqs',  'heroVideo', 'heroImage', 'galleryImages'));
+        return view('welcome',compact('setting', 'content', 'faqs',  'heroVideo', 'heroImage', 'galleryImages', 'testimonials'));
     }
 }
