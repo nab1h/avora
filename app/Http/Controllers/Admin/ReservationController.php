@@ -31,14 +31,16 @@ class ReservationController extends Controller
         $pending = Reservation::where('status', 'pending')->count();
         $confirmed = Reservation::where('status', 'confirmed')->count();
         $completed = Reservation::where('status', 'completed')->count();
+        $archive = Reservation::where('is_archive', true)->count();
 
-        return view('reservations.index', compact(
+        return view('admin.reservations.index', compact(
             'reservations',
             'totalReservations',
             'pending',
             'confirmed',
             'completed',
-            'totalArchived'
+            'totalArchived',
+            'archive'
         ));
     }
 
@@ -66,7 +68,7 @@ class ReservationController extends Controller
     // =========================
     public function create()
     {
-        return view('reservations.create');
+        return view('admin.reservations.create');
     }
 
     // =========================
@@ -102,7 +104,7 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
 
-        return view('reservations.edit', compact('reservation'));
+        return view('admin.reservations.edit', compact('reservation'));
     }
 
     // =========================
@@ -159,7 +161,7 @@ class ReservationController extends Controller
 
         $totalArchived = Reservation::where('is_archive', 1)->count();
 
-        return view('reservations.archive', compact('reservations', 'totalArchived'));
+        return view('admin.reservations.archive', compact('reservations', 'totalArchived'));
     }
 
     public function moveToArchive($id)

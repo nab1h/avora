@@ -65,6 +65,13 @@
                     <p class="text-green-400 text-xs">مكتمل</p>
                     <h4 class="text-xl text-white font-bold">{{ $completed }}</h4>
                 </div>
+
+                <a href="{{ route('reservations.archive') }}">
+                    <div class="bg-[#111] p-4 rounded-xl border border-[#1a1a1a]">
+                        <p class="text-green-400 text-xs">ارشيف</p>
+                        <h4 class="text-xl text-white font-bold">{{ $archive }}</h4>
+                    </div>
+                </a>
             </div>
 
             <!-- Table -->

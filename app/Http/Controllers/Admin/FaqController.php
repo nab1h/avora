@@ -10,7 +10,7 @@ class FaqController extends Controller
 {
     public function index()
     {
-        $faqs = Faq::all(); // سيتم ترتيبها تلقائياً بفضل الـ Global Scope
+        $faqs = Faq::all();
         return view('admin.faqs.index', compact('faqs'));
     }
 
@@ -28,7 +28,6 @@ class FaqController extends Controller
             'answer_ar' => 'nullable|string',
         ]);
 
-        // محاولة إيجاد أكبر رقم ترتيب لوضع السؤال الجديد آخر القائمة تلقائياً
         $maxOrder = Faq::max('order_column');
         $request->merge(['order_column' => $maxOrder + 1, 'is_active' => true]);
 
