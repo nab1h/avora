@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('profile.index') }}">
-                        <img src="{{ asset('logo.png') }}" class="h-20 w-auto" alt="Logo" />
+                        <img src="{{ asset('avora.png') }}" class="h-20 w-auto" alt="Logo" />
                     </a>
                 </div>
 
@@ -44,26 +44,53 @@
                 @endif
 
                 @if(auth()->user()->role === 'admin')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.testimonials.index')" :active="request()->routeIs('admin.testimonials.index')">
-                        {{ __('Testimonials') }}
-                    </x-nav-link>
-                </div>
-                @endif
+                <div class="hidden sm:flex sm:items-center sm:ms-10 relative group">
 
-                @if(auth()->user()->role === 'admin')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.media.index')" :active="request()->routeIs('admin.media.index')">
-                        {{ __('Media') }}
-                    </x-nav-link>
-                </div>
-                @endif
+                    <!-- Button -->
+                    <button
+                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition duration-200 focus:outline-none">
 
-                @if(auth()->user()->role === 'admin')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.faqs.index')" :active="request()->routeIs('admin.faqs.index')">
-                        {{ __('Faqs') }}
-                    </x-nav-link>
+                        Admin Panel
+
+                        <svg class="ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                            <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full left-0 mt-0 w-56 rounded-xl border border-gray-700 bg-gray-900 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50 overflow-hidden">
+
+                        <div class="py-2">
+
+                            <a href="{{ route('admin.testimonials.index') }}"
+                                class="block px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition">
+                                Testimonials
+                            </a>
+
+                            <a href="{{ route('admin.statistics.index') }}"
+                                class="block px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition">
+                                Statistics
+                            </a>
+
+                            <a href="{{ route('admin.media.index') }}"
+                                class="block px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition">
+                                Media
+                            </a>
+
+                            <a href="{{ route('admin.faqs.index') }}"
+                                class="block px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition">
+                                FAQs
+                            </a>
+
+                        </div>
+                    </div>
+
                 </div>
                 @endif
 

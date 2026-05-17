@@ -1353,7 +1353,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <img src="https://picsum.photos/seed/luxuryfood/1920/1080" class="hero-video" alt="Fine Dining Background">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="{{ asset('storage/' . $heroVideo->path) }}" type="video/mp4">
+        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="hero-subtitle"
@@ -1378,7 +1380,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image-wrapper">
-                    <img src="https://picsum.photos/seed/chef/600/700" alt="Executive Chef" class="about-image">
+                    <img src="{{ asset('storage/' . $heroImage->path) }}" alt="Executive Chef" class="about-image">
                 </div>
                 <div class="about-text">
                     <h2 data-content-en="{{ $content->about_title_en }}"
@@ -1392,18 +1394,19 @@
                     <a href="#menu" class="btn" data-lang="about_btn">Discover More</a>
 
                     <div class="stats-container">
+                        @forelse($stats as $index => $item)
                         <div class="stat-item">
-                            <h4>15+</h4>
-                            <p data-lang="stat_exp">Years Experience</p>
+                            <h4>{{ $item->number }}</h4>
+
+                            <p
+                                data-lang="stat_exp"
+                                data-content-en="{{ $item->title_en }}"
+                                data-content-ar="{{ $item->title_ar }}">
+                                {{ $item->title_en }}
+                            </p>
                         </div>
-                        <div class="stat-item">
-                            <h4>50k</h4>
-                            <p data-lang="stat_happy">Happy Customers</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>40+</h4>
-                            <p data-lang="stat_dishes">Signature Dishes</p>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -1522,26 +1525,13 @@
                 <p class="text-gold" data-lang="gallery_subtitle">Atmosphere & Plating</p>
             </div>
             <div class="gallery-grid">
+                @foreach ($galleryImages as $image)
                 <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/restaurant1/600/600" alt="Gallery" class="gallery-img">
+                    <img src="{{ asset('storage/' .$image->path) }}" alt="Gallery" class="gallery-img">
                     <div class="gallery-overlay"><i class="fas fa-search-plus gallery-icon"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/restaurant2/400/400" alt="Gallery" class="gallery-img">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus gallery-icon"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/restaurant3/400/400" alt="Gallery" class="gallery-img">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus gallery-icon"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/restaurant4/400/400" alt="Gallery" class="gallery-img">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus gallery-icon"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/restaurant5/400/400" alt="Gallery" class="gallery-img">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus gallery-icon"></i></div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </section>

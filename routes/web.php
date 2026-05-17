@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\HomeContentController;
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(
 
             Route::prefix('admin')->name('admin.')->group(function () {
                 Route::resource('faqs', FaqController::class);
+            });
+
+            Route::prefix('admin')->name('admin.')->group(function () {
+                Route::resource('statistics', StatisticController::class);
             });
 
             Route::prefix('settings')->name('settings.')->group(function () {
