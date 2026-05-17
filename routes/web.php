@@ -12,9 +12,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\HomeContentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/reservations', [ReservationController::class, 'store'])
-    ->name('reservations.store');
-// في web.php
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
 
 
@@ -28,8 +26,6 @@ Route::middleware('auth')->group(
 
         // admin
         Route::middleware('role:admin')->group(function () {
-
-
             Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/home-contents', [HomeContentController::class, 'index'])->name('home-contents.index');
                 Route::post('/home-contents/{id}', [HomeContentController::class, 'update'])->name('home-contents.update');
@@ -66,7 +62,7 @@ Route::middleware('auth')->group(
             });
         });
 
-        // admin + sales
+        // admin + supervisor
         Route::middleware('role:admin,sales')->group(function () {
             Route::get('/reservations', [ReservationController::class, 'index'])
                 ->name('reservations.index');
